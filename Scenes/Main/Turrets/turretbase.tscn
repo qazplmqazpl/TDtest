@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://dvf4bdiv03xeu"]
+
+[ext_resource type="Script" uid="uid://da322ih4um0ee" path="res://Scenes/Main/Turrets/turretbase.gd" id="1_3gxt1"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_3gxt1"]
+
+[node name="Turretbase" type="Node2D"]
+script = ExtResource("1_3gxt1")
+
+[node name="TowerSprite" type="Sprite2D" parent="."]
+texture = SubResource("PlaceholderTexture2D_3gxt1")
+
+[node name="AreaRange" type="Area2D" parent="."]

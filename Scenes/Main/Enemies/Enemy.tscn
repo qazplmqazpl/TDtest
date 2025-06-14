@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://cuvo4845pu0nq"]
+
+[ext_resource type="Script" uid="uid://hvlylk0wlcrx" path="res://Scenes/Main/Enemies/Enemy.gd" id="1_s12mh"]
+[ext_resource type="Script" uid="uid://blynabqlennp8" path="res://Scenes/Main/Enemies/collision_shape_2d.gd" id="2_8ls7k"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_s12mh"]
+font_size = 10
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_s12mh"]
+
+[node name="Enemy" type="PathFollow2D"]
+loop = false
+script = ExtResource("1_s12mh")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="Labelhp" type="Label" parent="."]
+offset_left = -5.0
+offset_top = -20.0
+offset_right = 8.0
+offset_bottom = -13.0
+label_settings = SubResource("LabelSettings_s12mh")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_s12mh")
+script = ExtResource("2_8ls7k")
