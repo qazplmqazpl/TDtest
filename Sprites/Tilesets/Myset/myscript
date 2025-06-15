@@ -1,0 +1,8 @@
+from krita import *
+app = Krita.instance()
+doc = app.activeDocument()
+#current = doc.activeNode()
+print(doc.topLevelNodes())
+#for i in doc.topLevelNodes():
+#    print(i)
+#    print(i.name())
