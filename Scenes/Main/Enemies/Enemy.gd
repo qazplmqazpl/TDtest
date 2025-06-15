@@ -7,6 +7,8 @@ var armor := 5
 
 func set_hp(setval):
 	hp = setval
+	if hp<=0:
+		queue_free()
 	$Labelhp.set_text(str(hp))
 	
 func get_hp():

@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://2dv0b8p1xqn8"]
+[gd_scene load_steps=19 format=4 uid="uid://2dv0b8p1xqn8"]
 
 [ext_resource type="Script" uid="uid://bf6fxy5doshrv" path="res://Scenes/Main/main.gd" id="1_1r6ip"]
 [ext_resource type="Script" uid="uid://nia1ylkm8iiw" path="res://Scenes/Main/camera_2d.gd" id="2_hryqi"]
@@ -10,11 +10,13 @@
 [ext_resource type="Script" uid="uid://ckngeqqamrkom" path="res://Scenes/Main/labelgold.gd" id="7_xlvfx"]
 [ext_resource type="Script" uid="uid://chkapw0djfpl3" path="res://Scenes/Main/towermenu.gd" id="8_y3v7k"]
 [ext_resource type="Script" uid="uid://chgyl4vh1sxyu" path="res://Scenes/Main/ui.gd" id="9_hfg1r"]
+[ext_resource type="Script" uid="uid://rv3sifrqh5ad" path="res://Scenes/Main/labellife.gd" id="10_6t3k2"]
 [ext_resource type="Script" uid="uid://cjnv37vjxco5b" path="res://Scenes/Main/wavevisualization.gd" id="10_imbg2"]
+[ext_resource type="Script" uid="uid://w6qxt11kt7y0" path="res://Scenes/Main/enemy_path_end.gd" id="12_4e4y2"]
 
 [sub_resource type="Curve2D" id="Curve2D_lixft"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -574, 51, -20.683, 241.524, 20.683, -241.524, 299, -128, 113.636, -96.3636, -113.636, 96.3636, -89, -234, 0, 0, 0, 0, -27, 121, 0, 0, 0, 0, 601, 37)
+"points": PackedVector2Array(0, 0, 0, 0, -286, 9, -20.683, 241.524, 20.683, -241.524, 299, -128, 113.636, -96.3636, -113.636, 96.3636, -89, -234, 0, 0, 0, 0, -27, 121, 0, 0, 0, 0, 758, 52)
 }
 point_count = 5
 
@@ -54,16 +56,21 @@ sources/0 = SubResource("TileSetAtlasSource_2a143")
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_imbg2"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6t3k2"]
+size = Vector2(100, 100)
+
 [node name="Main" type="Node2D"]
 script = ExtResource("1_1r6ip")
 metadata/_edit_horizontal_guides_ = [-250.0]
+metadata/_edit_lock_ = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
 script = ExtResource("2_hryqi")
+metadata/_edit_lock_ = true
 
 [node name="Level" type="Node2D" parent="."]
-position = Vector2(467, 217)
+metadata/_edit_lock_ = true
 
 [node name="Layer0" type="TileMapLayer" parent="Level"]
 use_parent_material = true
@@ -71,8 +78,10 @@ scale = Vector2(0.25, 0.25)
 tile_map_data = PackedByteArray("AAAFAP//IgAFAAAAAAAEAAAAIgAFAAAAAAAEAAEAIgAFAAAAAAAFAP7/IgAFAAAAAAAGAP7/IgAFAAAAAAAGAP//IgAFAAAAAAAFAAAAIgAFAAAAAAAFAAEAIgAFAAAAAAAHAP//IgAFAAAAAAAGAAAAIgAFAAAAAAAHAP3/IgAFAAAAAAAIAPz/IgAFAAAAAAAIAP3/IgAFAAAAAAAHAP7/IgAFAAAAAAAIAP7/IgAFAAAAAAAJAP3/IgAFAAAAAAAJAPz/IgAFAAAAAAAJAPv/IgAFAAAAAAAIAPv/IgAFAAAAAAAHAPv/IgAFAAAAAAAHAPz/IgAFAAAAAAAGAPv/IgAFAAAAAAAGAPr/IgAFAAAAAAAGAPn/IgAFAAAAAAAGAPj/IgAFAAAAAAAGAPf/IgAFAAAAAAAKAPz/IgAFAAAAAAAKAPv/IgAFAAAAAAAKAPr/IgAFAAAAAAALAPv/IgAFAAAAAAALAPr/IgAFAAAAAAAJAPr/IgAFAAAAAAAIAPr/IgAFAAAAAAAIAPn/IgAFAAAAAAAJAPn/IgAFAAAAAAAKAPn/IgAFAAAAAAAHAPn/IgAFAAAAAAAHAPr/IgAFAAAAAAAIAPj/IgAFAAAAAAAHAPj/IgAFAAAAAAAIAPf/IgAFAAAAAAAJAPj/IgAFAAAAAAAHAPf/IgAFAAAAAAAGAPz/IgAFAAAAAAAGAP3/IgAFAAAAAAAFAP3/IgAFAAAAAAAFAPz/IgAFAAAAAAAFAPv/IgAFAAAAAAAFAPr/IgAFAAAAAAAFAPn/IgAFAAAAAAAEAPz/IgAFAAAAAAAEAP3/IgAFAAAAAAAEAP7/IgAFAAAAAAAEAP//IgAFAAAAAAADAP3/IgADAAEAAAADAP7/IgAFAAAAAAACAP//IgAFAAAAAAACAAAAIgAFAAAAAAADAAAAIgAFAAAAAAADAAEAIgAFAAAAAAADAAIAIgAFAAAAAAADAP//IgAFAAAAAAADAPz/IgADAAEAAAAEAAIAIgAFAAAAAAAEAAMAIgAFAAAAAAAEAAQAIgAFAAAAAAADAAMAIgAFAAAAAAACAAEAIgAFAAAAAAACAAIAIgAFAAAAAAACAAMAIgAFAAAAAAACAAQAIgAFAAAAAAACAAUAIgAFAAAAAAABAAUAIgAFAAAAAAABAAQAIgAFAAAAAAABAAMAIgAFAAAAAAABAAIAIgAFAAAAAAABAAEAIgAFAAAAAAABAAAAIgAFAAAAAAABAP//IgAFAAAAAAABAP7/IgAFAAAAAAABAP3/IgAFAAAAAAAAAAQAIgAFAAAAAAAAAAUAIgAFAAAAAAAAAAYAIgAFAAAAAAACAP3/IgAFAAAAAAACAP7/IgAFAAAAAAAAAAcAIgAFAAAAAAAAAAMAIgAFAAAAAAACAAYAIgAFAAAAAAADAAYAIgAFAAAAAAADAAcAIgAFAAAAAAADAAUAIgAFAAAAAAADAAQAIgAFAAAAAAD//wMAIgAFAAAAAAD//wIAIgAFAAAAAAAAAAEAIgAFAAAAAAAAAAAAIgAFAAAAAAAAAP//IgAFAAAAAAAAAAIAIgAFAAAAAAD//wQAIgAFAAAAAAD//wUAIgAFAAAAAAD//wYAIgAFAAAAAAD+/wcAIgAFAAAAAAD+/wgAIgAFAAAAAAD+/wkAIgAFAAAAAAD9/woAIgAFAAAAAAD9/wkAIgAFAAAAAAD+/wYAIgAFAAAAAAD+/wUAIgAFAAAAAAD+/wQAIgAFAAAAAAD+/wMAIgAFAAAAAAD//wEAIgAFAAAAAAD//wcAIgAFAAAAAAD//wgAIgAFAAAAAAD//wkAIgAFAAAAAAD+/wIAIgAFAAAAAAD+/wEAIgAFAAAAAAD9/wYAIgAFAAAAAAD9/wcAIgAFAAAAAAD//wAAIgAFAAAAAAD9/wQAIgAFAAAAAAD9/wUAIgAFAAAAAAD8/wgAIgAFAAAAAAD8/wkAIgAFAAAAAAAAAP7/IgAFAAAAAAAAAP3/IgAFAAAAAAD9/wIAIgAFAAAAAAD9/wMAIgAFAAAAAAD8/wcAIgAFAAAAAAACAPz/IgAFAAAAAAD+/woAIgAFAAAAAAD/////IgAFAAAAAAAKAP3/IgAFAAAAAAAJAP7/IgAFAAAAAAAIAP//IgAFAAAAAAAHAAAAIgAFAAAAAAAGAAEAIgAFAAAAAAAFAAIAIgAFAAAAAAAFAAMAIgAFAAAAAAAFAAQAIgAFAAAAAAAEAAUAIgAFAAAAAAAEAAYAIgAFAAAAAAAEAAcAIgAFAAAAAAADAAgAIgAFAAAAAAACAAgAIgAFAAAAAAACAAcAIgAFAAAAAAABAAcAIgAFAAAAAAABAAYAIgAFAAAAAAAAAAgAIgAFAAAAAAAAAAkAIgAFAAAAAAD//woAIgAFAAAAAAAAAAoAIgAFAAAAAAABAAoAIgAFAAAAAAABAAkAIgAFAAAAAAABAAgAIgAFAAAAAAACAAkAIgAFAAAAAAACAAoAIgAFAAAAAAADAAoAIgAFAAAAAAADAAkAIgAFAAAAAAAEAAkAIgAFAAAAAAAEAAgAIgAFAAAAAAAFAAgAIgAFAAAAAAAFAAcAIgAFAAAAAAAFAAYAIgAFAAAAAAAFAAUAIgAFAAAAAAAGAAUAIgAFAAAAAAAGAAQAIgAFAAAAAAAGAAMAIgAFAAAAAAAGAAIAIgAFAAAAAAAHAAIAIgAFAAAAAAAHAAEAIgAFAAAAAAAIAAEAIgAFAAAAAAAIAAAAIgAFAAAAAAAJAAAAIgAFAAAAAAAJAP//IgAFAAAAAAAKAP//IgAFAAAAAAAKAP7/IgAFAAAAAAALAP7/IgAFAAAAAAALAP3/IgAFAAAAAAALAPz/IgAFAAAAAAALAP//IgAFAAAAAAAKAAAAIgAFAAAAAAAJAAEAIgAFAAAAAAAIAAIAIgAFAAAAAAAHAAMAIgAFAAAAAAAHAAQAIgAFAAAAAAAHAAUAIgAFAAAAAAAGAAYAIgAFAAAAAAAGAAcAIgAFAAAAAAAGAAgAIgAFAAAAAAAFAAkAIgAFAAAAAAAEAAoAIgAFAAAAAAAFAAoAIgAFAAAAAAAGAAoAIgAFAAAAAAAGAAkAIgAFAAAAAAAHAAkAIgAFAAAAAAAHAAgAIgAFAAAAAAAHAAcAIgAFAAAAAAAHAAYAIgAFAAAAAAAIAAYAIgAFAAAAAAAIAAUAIgAFAAAAAAAIAAQAIgAFAAAAAAAIAAMAIgAFAAAAAAAJAAMAIgAFAAAAAAAJAAIAIgAFAAAAAAAKAAIAIgAFAAAAAAAKAAEAIgAFAAAAAAALAAEAIgAFAAAAAAALAAAAIgAFAAAAAAALAAIAIgAFAAAAAAAKAAMAIgAFAAAAAAAJAAQAIgAFAAAAAAAJAAUAIgAFAAAAAAAJAAYAIgAFAAAAAAAIAAcAIgAFAAAAAAAIAAgAIgAFAAAAAAAIAAkAIgAFAAAAAAAHAAoAIgAFAAAAAAAIAAoAIgAFAAAAAAAJAAoAIgAFAAAAAAAJAAkAIgAFAAAAAAAJAAgAIgAFAAAAAAAJAAcAIgAFAAAAAAAKAAcAIgAFAAAAAAAKAAYAIgAFAAAAAAAKAAUAIgAFAAAAAAAKAAQAIgAFAAAAAAALAAQAIgAFAAAAAAALAAMAIgAFAAAAAAALAAUAIgAFAAAAAAALAAYAIgAFAAAAAAALAAcAIgAFAAAAAAAKAAgAIgAFAAAAAAAKAAkAIgAFAAAAAAAKAAoAIgAFAAAAAAALAAoAIgAFAAAAAAALAAkAIgAFAAAAAAALAAgAIgAFAAAAAAALAPn/IgAFAAAAAAALAPj/IgAFAAAAAAALAPf/IgAFAAAAAAAKAPf/IgAFAAAAAAAJAPf/IgAFAAAAAAAKAPj/IgAFAAAAAAAEAPr/IgAFAAAAAAAEAPn/IgAFAAAAAAAEAPj/IgAFAAAAAAAEAPf/IgAFAAAAAAADAPf/IgAFAAAAAAACAPf/IgAFAAAAAAABAPf/IgAFAAAAAAAAAPf/IgAFAAAAAAD///f/IgAFAAAAAAD+//f/IgAFAAAAAAD9//f/IgAFAAAAAAD8//f/IgAFAAAAAAD8//j/IgAFAAAAAAD8//n/IgAFAAAAAAD8//r/IgAFAAAAAAD8//v/IgAFAAAAAAD8//z/IgAFAAAAAAD8//3/IgAFAAAAAAD8//7/IgAFAAAAAAD8////IgAFAAAAAAD8/wAAIgAFAAAAAAD8/wEAIgAFAAAAAAD8/wIAIgAFAAAAAAD8/wMAIgAFAAAAAAD8/wQAIgAFAAAAAAD8/wUAIgAFAAAAAAD8/wYAIgAFAAAAAAD9/wEAIgAFAAAAAAD9/wAAIgAFAAAAAAD9////IgAFAAAAAAD9//7/IgAFAAAAAAD9//3/IgAFAAAAAAD9//z/IgAFAAAAAAD9//v/IgAFAAAAAAD9//r/IgAFAAAAAAD9//n/IgAFAAAAAAD9//j/IgAFAAAAAAD+//j/IgAFAAAAAAD+//n/IgAFAAAAAAD+//r/IgAFAAAAAAD+//v/IgAFAAAAAAD+//z/IgAFAAAAAAD+//3/IgAFAAAAAAD+//7/IgAFAAAAAAD+////IgAFAAAAAAD+/wAAIgAFAAAAAAD///7/IgAFAAAAAAD///3/IgAFAAAAAAD///z/IgAFAAAAAAD///v/IgAFAAAAAAD///r/IgAFAAAAAAD///n/IgAFAAAAAAD///j/IgAFAAAAAAAAAPj/IgAFAAAAAAAAAPn/IgAFAAAAAAAAAPr/IgAFAAAAAAAAAPv/IgAFAAAAAAAAAPz/IgAFAAAAAAABAPz/IgAFAAAAAAABAPv/IgAFAAAAAAABAPr/IgAFAAAAAAABAPn/IgAFAAAAAAABAPj/IgAFAAAAAAACAPj/IgAFAAAAAAACAPn/IgAFAAAAAAACAPr/IgAFAAAAAAACAPv/IgAFAAAAAAADAPv/IgAFAAAAAAADAPr/IgAFAAAAAAADAPn/IgAFAAAAAAADAPj/IgAFAAAAAAAEAPv/IgAFAAAAAAAFAPf/IgAFAAAAAAAFAPj/IgAFAAAAAAD9/wgAIgAFAAAAAAA=")
 tile_set = ExtResource("2_qw60k")
 script = ExtResource("3_5yls4")
+metadata/_edit_lock_ = true
 
 [node name="Path2D" type="Path2D" parent="Level"]
+position = Vector2(331, 443)
 curve = SubResource("Curve2D_lixft")
 script = ExtResource("3_qw60k")
 metadata/_edit_lock_ = true
@@ -81,13 +90,15 @@ metadata/_edit_lock_ = true
 scale = Vector2(0.25, 0.25)
 tile_set = SubResource("TileSet_xlvfx")
 script = ExtResource("6_2a143")
+metadata/_edit_lock_ = true
 
 [node name="ButtonCreateWave" type="Button" parent="Level"]
-offset_left = -129.0
-offset_top = -154.0
-offset_right = -7.0
-offset_bottom = -129.0
+offset_left = 320.0
+offset_top = 62.0
+offset_right = 442.0
+offset_bottom = 93.0
 text = "create wave"
+metadata/_edit_lock_ = true
 
 [node name="Start" type="Button" parent="."]
 offset_left = 99.0
@@ -95,6 +106,7 @@ offset_top = 47.0
 offset_right = 160.0
 offset_bottom = 78.0
 text = "button"
+metadata/_edit_lock_ = true
 
 [node name="Add warior" type="Button" parent="."]
 offset_left = 125.0
@@ -102,6 +114,7 @@ offset_top = 173.0
 offset_right = 225.0
 offset_bottom = 204.0
 text = "Add warrior"
+metadata/_edit_lock_ = true
 
 [node name="Add pierdolec" type="Button" parent="."]
 offset_left = 124.0
@@ -109,6 +122,7 @@ offset_top = 293.0
 offset_right = 239.0
 offset_bottom = 324.0
 text = "Add pierdolec"
+metadata/_edit_lock_ = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -121,11 +135,18 @@ script = ExtResource("9_hfg1r")
 
 [node name="Labelgold" type="Label" parent="CanvasLayer/UI"]
 layout_mode = 0
-offset_left = 413.0
-offset_top = 110.0
-offset_right = 453.0
-offset_bottom = 133.0
+offset_left = 858.0
+offset_top = 16.0
+offset_right = 898.0
+offset_bottom = 39.0
 script = ExtResource("7_xlvfx")
+
+[node name="Labellife" type="Label" parent="CanvasLayer/UI"]
+offset_left = 862.0
+offset_top = 66.0
+offset_right = 902.0
+offset_bottom = 89.0
+script = ExtResource("10_6t3k2")
 
 [node name="Wavevisualization" type="Node2D" parent="CanvasLayer/UI"]
 position = Vector2(974, 50)
@@ -164,6 +185,15 @@ texture = SubResource("PlaceholderTexture2D_imbg2")
 centered = false
 metadata/_edit_lock_ = true
 
+[node name="EnemyPathEnd" type="Area2D" parent="."]
+position = Vector2(1050, 449)
+script = ExtResource("12_4e4y2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyPathEnd"]
+position = Vector2(53, 53)
+shape = SubResource("RectangleShape2D_6t3k2")
+metadata/_edit_lock_ = true
+
 [connection signal="enemyaddedsignal" from="Level/Path2D" to="CanvasLayer/UI/Wavevisualization" method="_enemy_added"]
 [connection signal="enemyaddedsignal" from="Level/Path2D" to="CanvasLayer/UI/Wavevisualization" method="_on_path_2d_enemyaddedsignal"]
 [connection signal="wavesentsignal" from="Level/Path2D" to="CanvasLayer/UI/Wavevisualization" method="_wave_sent"]
@@ -171,3 +201,4 @@ metadata/_edit_lock_ = true
 [connection signal="pressed" from="Start" to="Level/Path2D" method="_on_start_button_pressed"]
 [connection signal="pressed" from="Add warior" to="Level/Path2D" method="_on_warrior_button_pressed"]
 [connection signal="pressed" from="Add pierdolec" to="Level/Path2D" method="_on_pierdolec_button_pressed"]
+[connection signal="area_entered" from="EnemyPathEnd" to="EnemyPathEnd" method="_on_area_entered"]

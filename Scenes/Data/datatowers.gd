@@ -26,5 +26,18 @@ const towers := {
 		"cooldown" : 0.5,
 		"atlascoords" : Vector2i(0,2),
 		"texturepath" : ""
-	}
+	},
+	"tower3" : {
+		"name" : "tower3",
+		"price" : 50,
+		"dangerprice" : 5,
+		"id" : 2,
+		"range" : 400,
+		"speed" : 5.0,
+		"damage" : 5,
+		"projectilespeed" : 60,
+		"cooldown" : 0.5,
+		"atlascoords" : Vector2i(0,3),
+		"texturepath" : ""
+		}
 }
