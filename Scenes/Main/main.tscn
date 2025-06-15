@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://2dv0b8p1xqn8"]
+[gd_scene load_steps=20 format=4 uid="uid://2dv0b8p1xqn8"]
 
 [ext_resource type="Script" uid="uid://bf6fxy5doshrv" path="res://Scenes/Main/main.gd" id="1_1r6ip"]
 [ext_resource type="Script" uid="uid://nia1ylkm8iiw" path="res://Scenes/Main/camera_2d.gd" id="2_hryqi"]
@@ -19,6 +19,8 @@ _data = {
 "points": PackedVector2Array(0, 0, 0, 0, -286, 9, -20.683, 241.524, 20.683, -241.524, 299, -128, 113.636, -96.3636, -113.636, 96.3636, -89, -234, 0, 0, 0, 0, -27, 121, 0, 0, 0, 0, 758, 52)
 }
 point_count = 5
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_6t3k2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2a143"]
 texture = ExtResource("5_p6jpk")
@@ -86,42 +88,14 @@ curve = SubResource("Curve2D_lixft")
 script = ExtResource("3_qw60k")
 metadata/_edit_lock_ = true
 
+[node name="Sprite2D" type="Sprite2D" parent="Level/Path2D"]
+position = Vector2(0, -1)
+texture = SubResource("PlaceholderTexture2D_6t3k2")
+
 [node name="Towermaplayer" type="TileMapLayer" parent="Level"]
 scale = Vector2(0.25, 0.25)
 tile_set = SubResource("TileSet_xlvfx")
 script = ExtResource("6_2a143")
-metadata/_edit_lock_ = true
-
-[node name="ButtonCreateWave" type="Button" parent="Level"]
-offset_left = 320.0
-offset_top = 62.0
-offset_right = 442.0
-offset_bottom = 93.0
-text = "create wave"
-metadata/_edit_lock_ = true
-
-[node name="Start" type="Button" parent="."]
-offset_left = 99.0
-offset_top = 47.0
-offset_right = 160.0
-offset_bottom = 78.0
-text = "button"
-metadata/_edit_lock_ = true
-
-[node name="Add warior" type="Button" parent="."]
-offset_left = 125.0
-offset_top = 173.0
-offset_right = 225.0
-offset_bottom = 204.0
-text = "Add warrior"
-metadata/_edit_lock_ = true
-
-[node name="Add pierdolec" type="Button" parent="."]
-offset_left = 124.0
-offset_top = 293.0
-offset_right = 239.0
-offset_bottom = 324.0
-text = "Add pierdolec"
 metadata/_edit_lock_ = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -142,6 +116,7 @@ offset_bottom = 39.0
 script = ExtResource("7_xlvfx")
 
 [node name="Labellife" type="Label" parent="CanvasLayer/UI"]
+layout_mode = 0
 offset_left = 862.0
 offset_top = 66.0
 offset_right = 902.0
@@ -185,6 +160,32 @@ texture = SubResource("PlaceholderTexture2D_imbg2")
 centered = false
 metadata/_edit_lock_ = true
 
+[node name="Debugmenu" type="VBoxContainer" parent="CanvasLayer/UI"]
+offset_left = 28.0
+offset_top = 25.0
+offset_right = 143.0
+offset_bottom = 161.0
+
+[node name="Add pierdolec" type="Button" parent="CanvasLayer/UI/Debugmenu"]
+layout_mode = 2
+text = "Add pierdolec"
+metadata/_edit_lock_ = true
+
+[node name="Add warior" type="Button" parent="CanvasLayer/UI/Debugmenu"]
+layout_mode = 2
+text = "Add warrior"
+metadata/_edit_lock_ = true
+
+[node name="Start" type="Button" parent="CanvasLayer/UI/Debugmenu"]
+layout_mode = 2
+text = "button"
+metadata/_edit_lock_ = true
+
+[node name="ButtonCreateWave" type="Button" parent="CanvasLayer/UI/Debugmenu"]
+layout_mode = 2
+text = "create wave"
+metadata/_edit_lock_ = true
+
 [node name="EnemyPathEnd" type="Area2D" parent="."]
 position = Vector2(1050, 449)
 script = ExtResource("12_4e4y2")
@@ -194,11 +195,11 @@ position = Vector2(53, 53)
 shape = SubResource("RectangleShape2D_6t3k2")
 metadata/_edit_lock_ = true
 
-[connection signal="enemyaddedsignal" from="Level/Path2D" to="CanvasLayer/UI/Wavevisualization" method="_enemy_added"]
 [connection signal="enemyaddedsignal" from="Level/Path2D" to="CanvasLayer/UI/Wavevisualization" method="_on_path_2d_enemyaddedsignal"]
+[connection signal="enemyaddedsignal" from="Level/Path2D" to="CanvasLayer/UI/Wavevisualization" method="_enemy_added"]
 [connection signal="wavesentsignal" from="Level/Path2D" to="CanvasLayer/UI/Wavevisualization" method="_wave_sent"]
-[connection signal="pressed" from="Level/ButtonCreateWave" to="Level/Path2D" method="_on_button_create_wave_pressed"]
-[connection signal="pressed" from="Start" to="Level/Path2D" method="_on_start_button_pressed"]
-[connection signal="pressed" from="Add warior" to="Level/Path2D" method="_on_warrior_button_pressed"]
-[connection signal="pressed" from="Add pierdolec" to="Level/Path2D" method="_on_pierdolec_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/UI/Debugmenu/Add pierdolec" to="Level/Path2D" method="_on_pierdolec_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/UI/Debugmenu/Add warior" to="Level/Path2D" method="_on_warrior_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/UI/Debugmenu/Start" to="Level/Path2D" method="_on_start_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/UI/Debugmenu/ButtonCreateWave" to="Level/Path2D" method="_on_button_create_wave_pressed"]
 [connection signal="area_entered" from="EnemyPathEnd" to="EnemyPathEnd" method="_on_area_entered"]

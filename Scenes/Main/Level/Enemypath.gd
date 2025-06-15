@@ -15,7 +15,15 @@ class enemystruct:
 	var enemyname
 	var position
 
+func _draw():
+	var lastpoint = get_curve().get_point_position(0)
+	for i in range(get_curve().get_point_count()):
+		draw_dashed_line(lastpoint,get_curve().get_point_position(i),Color(1,1,1),5)
+		lastpoint=get_curve().get_point_position(i)
 
+func _ready():
+	pass
+		
 func _process(delta):
 	pass
 	#time+=delta

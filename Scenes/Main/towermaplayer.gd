@@ -3,8 +3,10 @@ extends TileMapLayer
 var whattowerareyoubuying := -1 
 var whatareyoubuyingname := ""
 var myenemycost = []
-func _on_button_tower_pressed(towername,enemycost) -> void:
+var clickedbutt 
+func _on_button_tower_pressed(towername,enemycost,button) -> void:
 	if Globals.currentgold >= Datatowers.towers[towername]["price"] and whattowerareyoubuying == -1:
+		clickedbutt = button
 		myenemycost = enemycost
 		Globals.cursormode = 1
 		Globals.currentgold-= Datatowers.towers[towername]["price"]
@@ -15,6 +17,8 @@ func _on_button_tower_pressed(towername,enemycost) -> void:
 	
 func _input(event: InputEvent):
 	if Input.is_action_just_pressed("LeftClick") and whattowerareyoubuying!=-1:
+		clickedbutt.free()
+		$"../../CanvasLayer/UI/Towermenu".update()
 		$"../Path2D".add_enemycost(myenemycost)
 		Globals.cursormode = 0
 		var tilecords = local_to_map(get_local_mouse_position())
