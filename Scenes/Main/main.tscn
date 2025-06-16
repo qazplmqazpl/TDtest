@@ -207,13 +207,18 @@ metadata/_edit_lock_ = true
 
 [node name="Start" type="Button" parent="CanvasLayer/UI/Debugmenu"]
 layout_mode = 2
-text = "button"
+text = "Button"
 metadata/_edit_lock_ = true
 
 [node name="ButtonCreateWave" type="Button" parent="CanvasLayer/UI/Debugmenu"]
 layout_mode = 2
-text = "create wave"
+text = "Create wave"
 metadata/_edit_lock_ = true
+
+[node name="Remove tower" type="Button" parent="CanvasLayer/UI/Debugmenu"]
+layout_mode = 2
+text = "Remove Tower
+"
 
 [node name="EnemyPathEnd" type="Area2D" parent="."]
 position = Vector2(1050, 449)
@@ -232,4 +237,5 @@ metadata/_edit_lock_ = true
 [connection signal="pressed" from="CanvasLayer/UI/Debugmenu/Add warior" to="Level/Path2D" method="_on_warrior_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/UI/Debugmenu/Start" to="Level/Path2D" method="_on_start_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/UI/Debugmenu/ButtonCreateWave" to="Level/Path2D" method="_on_button_create_wave_pressed"]
+[connection signal="pressed" from="CanvasLayer/UI/Debugmenu/Remove tower" to="Level/Towermaplayer" method="_on_remove_tower_pressed"]
 [connection signal="area_entered" from="EnemyPathEnd" to="EnemyPathEnd" method="_on_area_entered"]

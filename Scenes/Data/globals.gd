@@ -6,4 +6,4 @@ var currentMap : Node2D
 var hud : Control
 var currentgold := 1000
 var currenthp := 100
-var cursormode := 0 # 0normal/ 1selectingtowerplacement
+var cursormode := 0 # 0 normal/ 1 selecting tower placement / 2 removing a tower
