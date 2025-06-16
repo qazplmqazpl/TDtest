@@ -11,7 +11,7 @@ var pos := Vector2(0,0)
 @export var projectilespeed := 10
 var enemies := []
 @export var cooldowntime := 1.0
-var cooldowntimer = Timer.new()
+var cooldowntimer : Timer
 #var turretlabel = Label.new()
 
 #func _init(myrange = 100, myname = "initdebugname", mycoords = Vector2i(0,0), mypos = Vector2(0,0), mydamage = 1, mycooldown = #1.0, myprojectilespeed = 10):
@@ -27,19 +27,28 @@ var cooldowntimer = Timer.new()
 #	cooldowntimer.set_autostart(true)
 #	cooldowntimer.set_one_shot(true)
 	
-func _ready():
+func _enter_tree():
 	#rangeshape.set_radius(turretrange)
 	#rangecollisionshape.set_shape(rangeshape)
 	#rangearea.add_child(rangecollisionshape)
 	$"AreaRange".area_entered.connect(area_entered_tower)
 	$"AreaRange".area_exited.connect(area_exited_tower)
 	#add_child(rangearea)
-	add_child(cooldowntimer)
+	cooldowntimer = Timer.new()
+	cooldowntimer.set_wait_time(cooldowntime)
+	cooldowntimer.timeout.connect(attack)
+	cooldowntimer.set_paused(false)
+	cooldowntimer.set_autostart(true)
 	cooldowntimer.start()
+	#cooldowntimer.set_one_shot(true)
+	add_child(cooldowntimer)
 	#print("turretready")
 	pass
 
 func _process(_delta: float) -> void:
+	#cooldowntimer.start()
+	#print("turretabstract timer ", cooldowntimer.get_time_left(), cooldowntimer.is_paused(), cooldowntimer.is_stopped())
+	
 	pass
 	#turretlabel.set_text(str(cooldowntimer.get_time_left()))
 	#print(str(cooldowntimer.get_time_left()))
@@ -48,6 +57,7 @@ func attack():
 	#print("attack",enemies)
 	if not enemies.is_empty():
 		#print("attacking ",enemies)
+		cooldowntimer.start(cooldowntime)
 		
 		var bull = preload("res://Scenes/Main/Turrets/bulletbasic.tscn")
 		var newbull = bull.instantiate()
@@ -57,7 +67,6 @@ func attack():
 #print(get_global_position(),enemies[0].get_global_position(),get_global_position().angle_to(enemies[0].get_global_position()))
 		add_child(newbull)
 		#enemies[0].set_hp(enemies[0].get_hp()-damage)
-		cooldowntimer.start()
 		#cooldowntimer.set_paused(false)
 		#print(cooldowntimer.get_wait_time(),cooldowntimer,cooldowntimer.is_stopped())
 	
@@ -73,6 +82,7 @@ func area_entered_tower(area):
 	if area.get_parent() is Enemy:
 		#print("area entered tower",enemies,cooldowntimer.is_stopped(),cooldowntimer.get_wait_time())
 		enemies.append(area.get_parent())
+		#print("turretabstract timer ",cooldowntimer.is_stopped())
 		if cooldowntimer.is_stopped():
 			attack()
 		
