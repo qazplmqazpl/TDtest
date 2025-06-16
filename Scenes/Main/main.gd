@@ -10,13 +10,14 @@ func _ready():
 	print("main ",selectedMapScene)
 	print("main ",$"Level/Layer0".map_to_local(get_viewport().get_mouse_position()))
 func _process(delta):
+	pass
 #	#print(to_global($"Level/Layer0".map_to_local(get_viewport().get_mouse_position())))
 #	#var localpos = $"Level/Layer0".map_to_local(get_viewport().get_mouse_position())
-	if Globals.cursormode > 0:
-		var currenthighlight = $"Level/Layer highlight".local_to_map($"Level/Layer highlight".get_local_mouse_position())
-		if currenthighlight != lasthighlight:
-			$"Level/Layer highlight".returntonormal(lasthighlight)
-			$"Level/Layer highlight".highlight(currenthighlight)
-		lasthighlight = currenthighlight
+#	if Globals.cursormode > 0:
+#		var currenthighlight = $"Level/Layer highlight".local_to_map($"Level/Layer highlight".get_local_mouse_position())
+#		if currenthighlight != lasthighlight:
+#			$"Level/Layer highlight".returntonormal(lasthighlight)
+#			$"Level/Layer highlight".highlight(currenthighlight)
+#		lasthighlight = currenthighlight
 #	print(tilecords,get_viewport().get_mouse_position() ,$"Level/Layer0".to_local((get_viewport().get_mouse_position())))
 	

@@ -1,6 +1,13 @@
 extends TileMapLayer
+
+var lasthighlight : Vector2
+var currenthighlight : Vector2
 func _process(delta):
-	pass
+	currenthighlight = local_to_map(get_local_mouse_position())
+	if currenthighlight != lasthighlight:
+		returntonormal(lasthighlight)
+		highlight(currenthighlight)
+	lasthighlight = currenthighlight
 	#print(to_global($"Level/Layer0".map_to_local(get_viewport().get_mouse_position())))
 	#var localpos = $"Level/Layer0".map_to_local(get_viewport().get_mouse_position())
 	#var tilecords = local_to_map(get_viewport().get_mouse_position())
