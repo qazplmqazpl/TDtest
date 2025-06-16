@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://ct25xdsdcl3vy"]
+
+[ext_resource type="Script" uid="uid://cv5oiby5ppkkw" path="res://Scenes/Main/Turrets/turretscript.gd" id="1_ruk3c"]
+[ext_resource type="Texture2D" uid="uid://ds34ftraa8krc" path="res://Sprites/Tilesets/Hex Basic Terrain Set/atlasbasictowers.png" id="2_8upyc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ufuis"]
+atlas = ExtResource("2_8upyc")
+region = Rect2(768, 0, 256, 384)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7c4no"]
+radius = 1000.0
+
+[node name="Turret1" type="Node2D"]
+position = Vector2(0, -64)
+script = ExtResource("1_ruk3c")
+turretrange = 200
+projectilespeed = 20
+cooldowntime = 0.2
+
+[node name="TowerSprite" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_ufuis")
+
+[node name="AreaRange" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaRange"]
+shape = SubResource("CircleShape2D_7c4no")
+
+[connection signal="area_entered" from="AreaRange" to="." method="area_entered_tower"]
+[connection signal="area_exited" from="AreaRange" to="." method="area_exited_tower"]

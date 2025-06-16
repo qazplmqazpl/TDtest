@@ -1,8 +1,10 @@
-extends Node2D
+class_name Bullet extends Node2D
 
 var direction := 0.0
 var damage := 1
 var speed := 1.0
+var lifetime := 1000
+var currentlifetime := 0
 func set_direction(mydirection = 0.0):
 	direction = mydirection
 	
@@ -20,6 +22,10 @@ func _ready():
 
 func _process(delta: float) -> void:
 	translate(Vector2(speed,0).rotated(direction))
+	currentlifetime += delta
+	if currentlifetime > lifetime:
+		free()
+	
 	#print("bulletmovin")
 	
 func area_entered(area):

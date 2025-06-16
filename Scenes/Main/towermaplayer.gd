@@ -23,9 +23,9 @@ func _input(event: InputEvent):
 		Globals.cursormode = 0
 		var tilecords = local_to_map(get_local_mouse_position())
 		print("Main/Level/Towermaplayer tilecordss ",tilecords)
-		set_cell(tilecords ,tile_set.get_source_id(0),Vector2i(whattowerareyoubuying,0), 0)
+		set_cell(tilecords ,tile_set.get_source_id(1),Vector2i(0,0), Datatowers.towers[whatareyoubuyingname]["id"])
 		whattowerareyoubuying = -1
-		var newturret = TurretAbstract.new(Datatowers.towers[whatareyoubuyingname]["range"],whatareyoubuyingname,tilecords,map_to_local(tilecords),Datatowers.towers[whatareyoubuyingname]["damage"],Datatowers.towers[whatareyoubuyingname]["cooldown"],Datatowers.towers[whatareyoubuyingname]["projectilespeed"])
-		newturret.place(tilecords,map_to_local(tilecords))
-		add_child(newturret)
+		#var newturret = load(Datatowers.towers[whatareyoubuyingname]["scenepath"]).instantiate()
+		#newturret.place(tilecords,map_to_local(tilecords))
+		#add_child(newturret)
 		

@@ -17,6 +17,6 @@ func _process(delta):
 		#set_cell(tilecords ,tile_set.get_source_id(0),Vector2i(get_cell_atlas_coords(tilecords).x,1), 0)
 		#
 func highlight(pos : Vector2):
-	set_cell(pos ,tile_set.get_source_id(0),Vector2i(get_cell_atlas_coords(pos).x,1), 0)
+	set_cell(pos ,tile_set.get_source_id(0),Vector2i(4,0), 0)
 func returntonormal(pos : Vector2):
-	set_cell(pos ,tile_set.get_source_id(0),Vector2i(get_cell_atlas_coords(pos).x,0), 0)
+	set_cell(pos ,tile_set.get_source_id(-1),Vector2i(-1,-1), -1)
