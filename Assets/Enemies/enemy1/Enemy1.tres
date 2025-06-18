@@ -1,0 +1,11 @@
+[gd_resource type="AnimatedTexture" load_steps=3 format=3 uid="uid://j37ifttxh6bv"]
+
+[ext_resource type="Texture2D" uid="uid://54adiqtlgugo" path="res://Assets/Enemies/enemy1/enemy1f1.png" id="1_8ct4w"]
+[ext_resource type="Texture2D" uid="uid://be6ed77dli3jm" path="res://Assets/Enemies/enemy1/enemy1f2.png" id="2_1m8c6"]
+
+[resource]
+frames = 2
+frame_0/texture = ExtResource("1_8ct4w")
+frame_0/duration = 0.25
+frame_1/texture = ExtResource("2_1m8c6")
+frame_1/duration = 0.25

@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://cuvo4845pu0nq"]
+[gd_scene load_steps=6 format=3 uid="uid://cuvo4845pu0nq"]
 
 [ext_resource type="Script" uid="uid://hvlylk0wlcrx" path="res://Scenes/Main/Enemies/Enemy.gd" id="1_s12mh"]
 [ext_resource type="Script" uid="uid://blynabqlennp8" path="res://Scenes/Main/Enemies/collision_shape_2d.gd" id="2_8ls7k"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_8ls7k"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_s12mh"]
 font_size = 10
@@ -13,6 +15,7 @@ loop = false
 script = ExtResource("1_s12mh")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("PlaceholderTexture2D_8ls7k")
 
 [node name="Labelhp" type="Label" parent="."]
 offset_left = -5.0

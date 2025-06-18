@@ -1,6 +1,6 @@
 [gd_resource type="TileSet" load_steps=4 format=3 uid="uid://cyia0i6qljxgv"]
 
-[ext_resource type="Texture2D" uid="uid://ckk4ids7k7pej" path="res://Sprites/Tilesets/Hex Basic Terrain Set/atlas1.png" id="1_bvl5k"]
+[ext_resource type="Texture2D" uid="uid://ckk4ids7k7pej" path="res://Assets/Tilesets/Hex Basic Terrain Set/atlas1.png" id="1_bvl5k"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_bvl5k"]
 tile_data = PackedInt32Array(65536, 262176, 0, 131072, 327712, 0, 196608, 393248, 0, 1, 458784, 0, 65537, 458784, 0, 131073, 524320, 0, 196609, 393248, 0, 2, 458784, 0, 65538, 524320, 0, 131074, 524320, 0, 196610, 262176, 0, 3, 262176, 0, 65539, 524320, 0, 131075, 393248, 0, 4, 393248, 0, 65540, 262176, 0)

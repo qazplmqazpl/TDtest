@@ -1,0 +1,41 @@
+[gd_scene load_steps=4 format=3 uid="uid://boswfqldarib4"]
+
+[ext_resource type="Texture2D" uid="uid://dwtvnc88a5hhe" path="res://Assets/OtherGraphics/titlescreen.png" id="1_sq3r1"]
+[ext_resource type="Script" uid="uid://dki3sjr8ntqc6" path="res://Scenes/Main/Menus/start_game.gd" id="2_hd1tm"]
+[ext_resource type="Script" uid="uid://16ucvsiuylpg" path="res://Scenes/Main/Menus/exit.gd" id="3_isr41"]
+
+[node name="Main Menu" type="Node2D"]
+
+[node name="Background" type="Sprite2D" parent="."]
+texture = ExtResource("1_sq3r1")
+centered = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+offset_left = 84.0
+offset_top = 310.0
+offset_right = 234.0
+offset_bottom = 481.0
+
+[node name="Start Game" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Start
+"
+script = ExtResource("2_hd1tm")
+
+[node name="Exit" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Exit"
+script = ExtResource("3_isr41")
+
+[node name="Surprise" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "???
+"
+
+[node name="Mytdtest 2025" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Mytdtest2025
+"
+
+[connection signal="pressed" from="VBoxContainer/Start Game" to="VBoxContainer/Start Game" method="_on_pressed"]
+[connection signal="pressed" from="VBoxContainer/Exit" to="VBoxContainer/Exit" method="_on_pressed"]

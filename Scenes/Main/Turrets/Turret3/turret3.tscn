@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://ct25xdsdcl3vy"]
 
 [ext_resource type="Script" uid="uid://cv5oiby5ppkkw" path="res://Scenes/Main/Turrets/turretscript.gd" id="1_ruk3c"]
-[ext_resource type="Texture2D" uid="uid://ds34ftraa8krc" path="res://Sprites/Tilesets/Hex Basic Terrain Set/atlasbasictowers.png" id="2_8upyc"]
+[ext_resource type="Texture2D" uid="uid://ds34ftraa8krc" path="res://Assets/Tilesets/Hex Basic Terrain Set/atlasbasictowers.png" id="2_8upyc"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ufuis"]
 atlas = ExtResource("2_8upyc")

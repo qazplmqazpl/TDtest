@@ -36,7 +36,7 @@ func expired():
 	
 func _process(delta: float) -> void:
 	translate(Vector2(speed,0).rotated(direction))
-	print(lifetimetimer.time_left)
+	#print(lifetimetimer.time_left)
 	
 	#print("bulletmovin")
 	

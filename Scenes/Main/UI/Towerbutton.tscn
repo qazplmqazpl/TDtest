@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://d1s08m4vgk5o8"]
 
-[ext_resource type="Texture2D" uid="uid://ds34ftraa8krc" path="res://Sprites/Tilesets/Hex Basic Terrain Set/atlasbasictowers.png" id="1_ifmex"]
+[ext_resource type="Texture2D" uid="uid://ds34ftraa8krc" path="res://Assets/Tilesets/Hex Basic Terrain Set/atlasbasictowers.png" id="1_ifmex"]
 [ext_resource type="Script" uid="uid://bnstsymbayqn7" path="res://Scenes/Main/UI/towerbutton.gd" id="2_68f6q"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ehoa4"]
