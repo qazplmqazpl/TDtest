@@ -16,10 +16,10 @@ func _ready() -> void:
 
 func _on_mouse_entered() -> void:
 	for i in enemycost:
-		$"../../WaveCostVisualization"._enemy_added( i.enemyname,i.position)
+		$"../../WaveCostVisualizationControl/WaveCostVisualization"._enemy_added( i.enemyname,i.position)
 		pass # Replace with function body.
 
 
 func _on_mouse_exited() -> void:
-	$"../../WaveCostVisualization"._wave_sent()
+	$"../../WaveCostVisualizationControl/WaveCostVisualization"._wave_sent()
 	pass # Replace with function body.

@@ -24,7 +24,7 @@ func _input(event: InputEvent):
 	else:
 		if Input.is_action_just_pressed("LeftClick") and whattowerareyoubuying!=-1:
 			clickedbutt.free()
-			$"../../CanvasLayer/UI/Towermenu".update()
+			$"../../CanvasLayer/UI/HBoxContainer/Towermenu".update()
 			$"../Path2D".add_enemycost(myenemycost)
 			Globals.cursormode = 0
 			var tilecords = local_to_map(get_local_mouse_position())

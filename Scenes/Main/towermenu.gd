@@ -23,7 +23,7 @@ func update():
 		#print(get_node("../../Level/Towermaplayer"))
 		var enemycost = enemypathref.createWaveStatic(Datatowers.towers[tower.name]["dangerprice"])
 		newbutt.enemycost = enemycost
-		newbutt.pressed.connect(Callable(get_node("../../../Level/Towermaplayer"),"_on_button_tower_pressed").bindv([tower.name,enemycost,newbutt]))
+		newbutt.pressed.connect(Callable(get_node("../../../../Level/Towermaplayer"),"_on_button_tower_pressed").bindv([tower.name,enemycost,newbutt]))
 		#print("Towermenu ",enemypathref.createWaveStatic(40))
 		#print("towermenu",tower)
 		add_child(newbutt)
