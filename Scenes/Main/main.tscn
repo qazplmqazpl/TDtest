@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=4 uid="uid://2dv0b8p1xqn8"]
+[gd_scene load_steps=42 format=4 uid="uid://2dv0b8p1xqn8"]
 
 [ext_resource type="Script" uid="uid://bf6fxy5doshrv" path="res://Scenes/Main/main.gd" id="1_1r6ip"]
 [ext_resource type="Script" uid="uid://nia1ylkm8iiw" path="res://Scenes/Main/camera_2d.gd" id="2_hryqi"]
@@ -19,6 +19,10 @@
 [ext_resource type="Texture2D" uid="uid://b68pjaduq0skm" path="res://Assets/Tilesets/Myset/foliage/foliageatlas.png" id="11_es6iu"]
 [ext_resource type="Script" uid="uid://w6qxt11kt7y0" path="res://Scenes/Main/enemy_path_end.gd" id="12_4e4y2"]
 [ext_resource type="FontFile" uid="uid://eulsejrydxi" path="res://Assets/Fonts/Pixelify_Sans/PixelifySans-VariableFont_wght.ttf" id="13_1t20g"]
+[ext_resource type="FontFile" uid="uid://c3bdiv3c7qici" path="res://Assets/Fonts/Pixelify_Sans/static/PixelifySans-Medium.ttf" id="13_ifk88"]
+[ext_resource type="StyleBox" uid="uid://10nfujp8sdbf" path="res://Assets/Themes/Level/ButtonHoverStyleBoxFlat.tres" id="13_tdwxr"]
+[ext_resource type="StyleBox" uid="uid://bdbn3itbfb5s0" path="res://Assets/Themes/Level/ButtonNormalStyleBoxFlat.tres" id="14_4o5wv"]
+[ext_resource type="StyleBox" uid="uid://cbtejer6pmwgu" path="res://Assets/Themes/Level/ButtonPressedStyleBoxFlat.tres" id="15_4a3kt"]
 [ext_resource type="Theme" uid="uid://bg22bmq6g8wxd" path="res://Assets/Themes/TowerMenuTheme.tres" id="18_1t20g"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_es6iu"]
@@ -181,8 +185,20 @@ tile_size = Vector2i(256, 256)
 sources/0 = SubResource("TileSetAtlasSource_2a143")
 sources/1 = SubResource("TileSetScenesCollectionSource_wliom")
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4a3kt"]
+
 [sub_resource type="Theme" id="Theme_1t20g"]
 default_font = ExtResource("13_1t20g")
+Button/colors/font_color = Color(0, 0, 0, 1)
+Button/colors/font_focus_color = Color(0, 0, 0, 1)
+Button/colors/font_hover_color = Color(0.431373, 0, 0, 1)
+Button/colors/font_hover_pressed_color = Color(0.431373, 0, 0, 1)
+Button/colors/font_pressed_color = Color(0.431373, 0, 0, 1)
+Button/fonts/font = ExtResource("13_ifk88")
+Button/styles/focus = SubResource("StyleBoxEmpty_4a3kt")
+Button/styles/hover = ExtResource("13_tdwxr")
+Button/styles/normal = ExtResource("14_4o5wv")
+Button/styles/pressed = ExtResource("15_4a3kt")
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_imbg2"]
 
