@@ -1,0 +1,8 @@
+[gd_resource type="Theme" format=3 uid="uid://bg22bmq6g8wxd"]
+
+[resource]
+MarginContainer/constants/margin_bottom = 0
+MarginContainer/constants/margin_left = 0
+MarginContainer/constants/margin_right = 0
+MarginContainer/constants/margin_top = 0
+VBoxContainer/constants/separation = 4

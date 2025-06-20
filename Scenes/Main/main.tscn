@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=4 uid="uid://2dv0b8p1xqn8"]
+[gd_scene load_steps=37 format=4 uid="uid://2dv0b8p1xqn8"]
 
 [ext_resource type="Script" uid="uid://bf6fxy5doshrv" path="res://Scenes/Main/main.gd" id="1_1r6ip"]
 [ext_resource type="Script" uid="uid://nia1ylkm8iiw" path="res://Scenes/Main/camera_2d.gd" id="2_hryqi"]
@@ -18,6 +18,8 @@
 [ext_resource type="PackedScene" uid="uid://ct25xdsdcl3vy" path="res://Scenes/Main/Turrets/Turret3/turret3.tscn" id="10_koken"]
 [ext_resource type="Texture2D" uid="uid://b68pjaduq0skm" path="res://Assets/Tilesets/Myset/foliage/foliageatlas.png" id="11_es6iu"]
 [ext_resource type="Script" uid="uid://w6qxt11kt7y0" path="res://Scenes/Main/enemy_path_end.gd" id="12_4e4y2"]
+[ext_resource type="FontFile" uid="uid://eulsejrydxi" path="res://Assets/Fonts/Pixelify_Sans/PixelifySans-VariableFont_wght.ttf" id="13_1t20g"]
+[ext_resource type="Theme" uid="uid://bg22bmq6g8wxd" path="res://Assets/Themes/TowerMenuTheme.tres" id="18_1t20g"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_es6iu"]
 texture = ExtResource("5_koken")
@@ -179,6 +181,9 @@ tile_size = Vector2i(256, 256)
 sources/0 = SubResource("TileSetAtlasSource_2a143")
 sources/1 = SubResource("TileSetScenesCollectionSource_wliom")
 
+[sub_resource type="Theme" id="Theme_1t20g"]
+default_font = ExtResource("13_1t20g")
+
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_imbg2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vk4q2"]
@@ -240,6 +245,7 @@ metadata/_edit_lock_ = true
 
 [node name="UI" type="ReferenceRect" parent="CanvasLayer"]
 mouse_filter = 2
+theme = SubResource("Theme_1t20g")
 border_color = Color(0.753142, 0.364321, 0.707861, 1)
 border_width = 62.5
 editor_only = false
@@ -331,6 +337,7 @@ metadata/_edit_lock_ = true
 [node name="Towermenu" type="VBoxContainer" parent="CanvasLayer/UI/HBoxContainer"]
 layout_mode = 2
 mouse_filter = 0
+theme = ExtResource("18_1t20g")
 script = ExtResource("8_y3v7k")
 
 [node name="Enemy time" type="VSlider" parent="CanvasLayer/UI/HBoxContainer"]
@@ -346,8 +353,8 @@ position = Vector2(164, -135)
 shape = SubResource("RectangleShape2D_vk4q2")
 metadata/_edit_lock_ = true
 
-[connection signal="enemyaddedsignal" from="Level/Path2D" to="CanvasLayer/UI/HBoxContainer/WaveVisualizationControl/Wavevisualization" method="_enemy_added"]
 [connection signal="enemyaddedsignal" from="Level/Path2D" to="CanvasLayer/UI/HBoxContainer/WaveVisualizationControl/Wavevisualization" method="_on_path_2d_enemyaddedsignal"]
+[connection signal="enemyaddedsignal" from="Level/Path2D" to="CanvasLayer/UI/HBoxContainer/WaveVisualizationControl/Wavevisualization" method="_enemy_added"]
 [connection signal="wavesentsignal" from="Level/Path2D" to="CanvasLayer/UI/HBoxContainer/WaveVisualizationControl/Wavevisualization" method="_wave_sent"]
 [connection signal="pressed" from="CanvasLayer/UI/Debugmenu/Add pierdolec" to="Level/Path2D" method="_on_pierdolec_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/UI/Debugmenu/Add warior" to="Level/Path2D" method="_on_warrior_button_pressed"]

@@ -68,7 +68,7 @@ func add_enemy(name : String):
 	print("Path2D addenemy")
 	var enemy = enemystruct.new()
 	enemy.enemyname = name
-	enemy.position = $"../../CanvasLayer/UI/Enemy time".get_as_ratio()
+	enemy.position = $"../../CanvasLayer/UI/HBoxContainer/Enemy time".get_as_ratio()
 	enemyqueue.insert(enemyqueue.bsearch_custom(enemy,add_enemy_binary_search,false),enemy)
 	enemyaddedsignal.emit(name,enemy.position)
 
