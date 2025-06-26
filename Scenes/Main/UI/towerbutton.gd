@@ -21,5 +21,5 @@ func _on_mouse_entered() -> void:
 
 
 func _on_mouse_exited() -> void:
-	$"../../WaveCostVisualizationControl/WaveCostVisualization"._wave_sent()
+	$"../../WaveCostVisualizationControl/WaveCostVisualization"._mouse_exited()
 	pass # Replace with function body.

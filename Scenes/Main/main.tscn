@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=4 uid="uid://2dv0b8p1xqn8"]
+[gd_scene load_steps=43 format=4 uid="uid://2dv0b8p1xqn8"]
 
 [ext_resource type="Script" uid="uid://bf6fxy5doshrv" path="res://Scenes/Main/main.gd" id="1_1r6ip"]
 [ext_resource type="Script" uid="uid://nia1ylkm8iiw" path="res://Scenes/Main/camera_2d.gd" id="2_hryqi"]
@@ -200,7 +200,11 @@ Button/styles/hover = ExtResource("13_tdwxr")
 Button/styles/normal = ExtResource("14_4o5wv")
 Button/styles/pressed = ExtResource("15_4a3kt")
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ifk88"]
+bg_color = Color(0.983162, 0.34185, 0.443557, 1)
+
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_imbg2"]
+size = Vector2(5, 500)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vk4q2"]
 size = Vector2(121.95, 710)
@@ -317,12 +321,38 @@ text = "Remove Tower
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/UI"]
 layout_mode = 1
-anchors_preset = 1
+anchors_preset = 11
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -40.0
-offset_bottom = 40.0
+anchor_bottom = 1.0
+offset_left = -68.0
 grow_horizontal = 0
+grow_vertical = 2
+
+[node name="Panel" type="PanelContainer" parent="CanvasLayer/UI/HBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_ifk88")
+
+[node name="Test_delete" type="VBoxContainer" parent="CanvasLayer/UI/HBoxContainer/Panel"]
+layout_mode = 2
+mouse_filter = 0
+theme = ExtResource("18_1t20g")
+theme_override_constants/separation = 50
+alignment = 1
+
+[node name="Button" type="Button" parent="CanvasLayer/UI/HBoxContainer/Panel/Test_delete"]
+layout_mode = 2
+text = "xvxcv"
+
+[node name="Button2" type="Button" parent="CanvasLayer/UI/HBoxContainer/Panel/Test_delete"]
+layout_mode = 2
+text = "xvxcv"
+
+[node name="Button3" type="Button" parent="CanvasLayer/UI/HBoxContainer/Panel/Test_delete"]
+layout_mode = 2
+text = "xvxcv"
 
 [node name="WaveVisualizationControl" type="Control" parent="CanvasLayer/UI/HBoxContainer"]
 custom_minimum_size = Vector2(20, 20)
@@ -332,10 +362,16 @@ layout_mode = 2
 script = ExtResource("10_imbg2")
 
 [node name="StraightLine" type="Sprite2D" parent="CanvasLayer/UI/HBoxContainer/WaveVisualizationControl/Wavevisualization"]
-scale = Vector2(5, 532.25)
 texture = SubResource("PlaceholderTexture2D_imbg2")
 centered = false
 metadata/_edit_lock_ = true
+
+[node name="WaveCursor" type="Polygon2D" parent="CanvasLayer/UI/HBoxContainer/WaveVisualizationControl/Wavevisualization/StraightLine"]
+position = Vector2(16, -311)
+rotation = 0.00272731
+color = Color(1, 0.121569, 0.12549, 1)
+offset = Vector2(-20, 0)
+polygon = PackedVector2Array(-123.048, 349.391, -133.933, 391.421, -59.0642, 343.217, 1.87282, 320.051, -124.296, 258.395, -113.173, 303.364, -160.197, 294.493, -166.061, 344.509)
 
 [node name="WaveCostVisualizationControl" type="Control" parent="CanvasLayer/UI/HBoxContainer"]
 custom_minimum_size = Vector2(20, 20)
@@ -345,15 +381,16 @@ layout_mode = 2
 script = ExtResource("10_imbg2")
 
 [node name="StraightLine" type="Sprite2D" parent="CanvasLayer/UI/HBoxContainer/WaveCostVisualizationControl/WaveCostVisualization"]
-scale = Vector2(5, 532.25)
 texture = SubResource("PlaceholderTexture2D_imbg2")
 centered = false
 metadata/_edit_lock_ = true
 
 [node name="Towermenu" type="VBoxContainer" parent="CanvasLayer/UI/HBoxContainer"]
 layout_mode = 2
+size_flags_stretch_ratio = 4.15
 mouse_filter = 0
 theme = ExtResource("18_1t20g")
+alignment = 1
 script = ExtResource("8_y3v7k")
 
 [node name="Enemy time" type="VSlider" parent="CanvasLayer/UI/HBoxContainer"]

@@ -35,6 +35,7 @@ func _process(delta):
 	#	timecounter += delta
 	
 func sendwave():
+	wavesentsignal.emit()
 	for i in enemyqueue:
 		print(i.enemyname, i.position)
 	var enemyname
@@ -51,7 +52,6 @@ func sendwave():
 		timepassed = poppedenemy.position*wavetime
 		add_child(enemy)
 		print("path2d sendin enemy time", timepassed )
-	wavesentsignal.emit()
 		
 				
 

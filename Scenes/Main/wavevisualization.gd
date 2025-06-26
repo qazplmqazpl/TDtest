@@ -11,7 +11,19 @@ func _enemy_added(enemyname: String, position: float) -> void:
 	#queue_redraw() 
 	
 func _wave_sent():
+	var oldpos = $StraightLine/WaveCursor.get_position()
+	for timepassed in range(0,100,1):
+		var timepassedfloat = float(timepassed)/100.0
+		await get_tree().create_timer(0.01).timeout # range(start,end,jump) await jump/100
+		$StraightLine/WaveCursor.set_position(oldpos+Vector2(0,timepassedfloat*($StraightLine.get_texture().get_height())*($StraightLine.get_scale().y)))
 	for i in get_children():
 		if i != $StraightLine:
 			i.queue_free()
+	$StraightLine/WaveCursor.set_position(oldpos)
+
+func _mouse_exited():
+	for i in get_children():
+		if i != $StraightLine:
+			i.queue_free()
+	
 			
